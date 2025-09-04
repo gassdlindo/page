@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orçamento</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #eaeaea;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 320px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      background: #1178d3;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 15px;
+    }
+
+    .info {
+      margin-bottom: 12px;
+    }
+
+    .info label {
+      font-weight: bold;
+      font-size: 14px;
+      color: #555;
+      display: block;
+    }
+
+    .info p {
+      font-size: 16px;
+      margin: 2px 0 8px 0;
+      font-weight: bold;
+      color: #222;
+    }
+
+    .total {
+      background: #f7f7f7;
+      padding: 10px;
+      text-align: right;
+      font-size: 18px;
+      font-weight: bold;
+      border-top: 2px solid #1178d3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">ORÇAMENTO - TCHÊE PNEUS</div>
+    <div class="content">
+      <div class="info">
+        <label>Cliente:</label>
+        <p id="cliente"></p>
+      </div>
+      <div class="info">
+        <label>Produto:</label>
+        <p id="produto"></p>
+      </div>
+      <div class="info">
+        <label>Quantidade:</label>
+        <p id="qtd"></p>
+      </div>
+      <div class="info">
+        <label>Valor Unitário:</label>
+        <p id="valor"></p>
+      </div>
+      <div class="info">
+        <label>Frete:</label>
+        <p id="frete"></p>
+      </div>
+      <div class="info">
+        <label>Forma de Pagamento:</label>
+        <p id="pagamento"></p>
+      </div>
+    </div>
+    <div class="total">
+      TOTAL: <span id="total"></span>
+    </div>
+  </div>
+
+  <script>
+    function getQueryParams() {
+      let params = {};
+      let search = window.location.search.substring(1).split("&");
+      for (let part of search) {
+        let [key, value] = part.split("=");
+        params[key] = decodeURIComponent(value || "");
+      }
+      return params;
+    }
+
+    window.onload = function () {
+      let q = getQueryParams();
+
+      let qtd = parseFloat(q.qtd || 0);
+      let valor = parseFloat(q.valor || 0);
+      let frete = parseFloat(q.frete || 0);
+      let total = (qtd * valor + frete).toFixed(2);
+
+      document.getElementById("cliente").textContent = q.cliente || "Não informado";
+      document.getElementById("produto").textContent = q.produto || "Sem descrição";
+      document.getElementById("qtd").textContent = qtd;
+      document.getElementById("valor").textContent = `R$ ${valor.toFixed(2)}`;
+      document.getElementById("frete").textContent = `R$ ${frete.toFixed(2)}`;
+      document.getElementById("pagamento").textContent = q.pagamento || "A combinar";
+      document.getElementById("total").textContent = `R$ ${total}`;
+    };
+  </script>
+</body>
+</html>
