@@ -49,23 +49,7 @@
             overflow: hidden;
         }
 
-        .logo-text {
-            color: #fff;
-            font-weight: bold;
-            font-size: 12px;
-            text-align: center;
-            line-height: 1.2;
-        }
-
-        .logo-accent {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(45deg, #27ae60, #2ecc71);
-            border-radius: 50%;
-        }
+        /* Removi .logo-text e .logo-accent pois não são usados com <img> */
 
         .company-name {
             font-size: 20px;
@@ -201,7 +185,7 @@
         <div class="header">
             <div class="decoration"></div>
             <div class="logo">
-                <img src="https://i.ibb.co/39MgGSX/Tche-Pneus-Logo.png" alt="Tchê Pneus Logo">
+                <img src="https://i.imgur.com/G5qWJ4p.png" alt="Tchê Pneus Logo" style="width: 100%; height: auto;">
             </div>
             <h1 class="company-name">ORÇAMENTO</h1>
             <p class="subtitle">Sua segurança é nossa prioridade</p>
@@ -243,44 +227,48 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            function getQueryParams() {
-                const params = {};
-                const search = window.location.search.substring(1);
-                if (search) {
-                    const parts = search.split("&");
-                    for (const part of parts) {
-                        const [key, value] = part.split("=");
-                        params[key] = decodeURIComponent(value || "");
+            // Adiciona um pequeno atraso para garantir que a página esteja completamente carregada e renderizada
+            // antes de preencher os dados. Ajuste o tempo (em ms) se necessário.
+            setTimeout(function() {
+                function getQueryParams() {
+                    const params = {};
+                    const search = window.location.search.substring(1);
+                    if (search) {
+                        const parts = search.split("&");
+                        for (const part of parts) {
+                            const [key, value] = part.split("=");
+                            params[key] = decodeURIComponent(value || "");
+                        }
                     }
+                    return params;
                 }
-                return params;
-            }
 
-            function formatCurrency(value) {
-                return new Intl.NumberFormat('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL'
-                }).format(value);
-            }
+                function formatCurrency(value) {
+                    return new Intl.NumberFormat('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                    }).format(value);
+                }
 
-            const q = getQueryParams();
-            
-            const cliente = q.cliente || "Não informado";
-            const produto = q.produto || "Sem descrição";
-            const qtd = parseFloat(q.qtd || 0);
-            const valor = parseFloat(q.valor || 0);
-            const frete = parseFloat(q.frete || 0);
-            const pagamento = q.pagamento || "A combinar";
-            
-            const total = qtd * valor + frete;
+                const q = getQueryParams();
+                
+                const cliente = q.cliente || "Não informado";
+                const produto = q.produto || "Sem descrição";
+                const qtd = parseFloat(q.qtd || 0);
+                const valor = parseFloat(q.valor || 0);
+                const frete = parseFloat(q.frete || 0);
+                const pagamento = q.pagamento || "A combinar";
+                
+                const total = qtd * valor + frete;
 
-            document.getElementById("cliente").textContent = cliente;
-            document.getElementById("produto").textContent = produto;
-            document.getElementById("qtd").textContent = qtd.toString();
-            document.getElementById("valor").textContent = formatCurrency(valor);
-            document.getElementById("frete").textContent = formatCurrency(frete);
-            document.getElementById("pagamento").textContent = pagamento;
-            document.getElementById("total").textContent = formatCurrency(total);
+                document.getElementById("cliente").textContent = cliente;
+                document.getElementById("produto").textContent = produto;
+                document.getElementById("qtd").textContent = qtd.toString();
+                document.getElementById("valor").textContent = formatCurrency(valor);
+                document.getElementById("frete").textContent = formatCurrency(frete);
+                document.getElementById("pagamento").textContent = pagamento;
+                document.getElementById("total").textContent = formatCurrency(total);
+            }, 500); // Atraso de 500 milissegundos (meio segundo)
         });
     </script>
 </body>
