@@ -1,277 +1,277 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orçamento - Tchê Pneus</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento - Tchê Pneus</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-        .container {
-            width: 380px;
-            background-color: #fff;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            position: relative;
-        }
+        .container {
+            width: 380px;
+            background-color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
 
-        .header {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: #fff;
-            text-align: center;
-            padding: 20px 15px;
-            position: relative;
-        }
+        .header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: #fff;
+            text-align: center;
+            padding: 20px 15px;
+            position: relative;
+        }
 
-        .logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 15px;
-            background: #000;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid #fff;
-            position: relative;
-            overflow: hidden;
-        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #fff;
+            position: relative;
+            overflow: hidden;
+        }
 
-        .company-name {
-            font-size: 20px;
-            font-weight: 700;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
+        .company-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
 
-        .subtitle {
-            font-size: 12px;
-            font-weight: 300;
-            margin: 5px 0 0 0;
-            opacity: 0.9;
-        }
+        .subtitle {
+            font-size: 12px;
+            font-weight: 300;
+            margin: 5px 0 0 0;
+            opacity: 0.9;
+        }
 
-        .content {
-            padding: 25px;
-            background: #fafafa;
-        }
+        .content {
+            padding: 25px;
+            background: #fafafa;
+        }
 
-        .info {
-            margin-bottom: 18px;
-            padding: 12px;
-            background: #fff;
-            border-radius: 8px;
-            border-left: 4px solid #e74c3c;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s ease;
-        }
+        .info {
+            margin-bottom: 18px;
+            padding: 12px;
+            background: #fff;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease;
+        }
 
-        .info:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+        .info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-        .info label {
-            font-weight: 500;
-            font-size: 13px;
-            color: #7f8c8d;
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
+        .info label {
+            font-weight: 500;
+            font-size: 13px;
+            color: #7f8c8d;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
 
-        .info p {
-            font-size: 16px;
-            margin: 0;
-            font-weight: 600;
-            color: #2c3e50;
-        }
+        .info p {
+            font-size: 16px;
+            margin: 0;
+            font-weight: 600;
+            color: #2c3e50;
+        }
 
-        .total {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            font-size: 20px;
-            font-weight: 700;
-            position: relative;
-            overflow: hidden;
-        }
+        .total {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+        }
 
-        .total::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #e74c3c, #f39c12, #27ae60);
-        }
+        .total::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #e74c3c, #f39c12, #27ae60);
+        }
 
-        .total-label {
-            font-size: 14px;
-            font-weight: 400;
-            opacity: 0.8;
-            margin-bottom: 5px;
-        }
+        .total-label {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
 
-        .total-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #2ecc71;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        }
+        .total-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2ecc71;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
 
-        .decoration {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            top: -50px;
-            right: -50px;
-        }
+        .decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            top: -50px;
+            right: -50px;
+        }
 
-        .tire-pattern {
-            position: absolute;
-            bottom: 10px;
-            right: 15px;
-            width: 30px;
-            height: 30px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        .tire-pattern {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-        .tire-pattern::before {
-            content: '';
-            width: 15px;
-            height: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-        }
+        .tire-pattern::before {
+            content: '';
+            width: 15px;
+            height: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+        }
 
-        @media (max-width: 480px) {
-            .container {
-                width: 95%;
-                max-width: 380px;
-            }
-            
-            body {
-                padding: 10px;
-            }
-        }
-    </style>
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                max-width: 380px;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="decoration"></div>
-            <div class="logo">
-                <img src="https://i.imgur.com/G5qWJ4p.png" alt="Tchê Pneus Logo" style="width: 100%; height: auto;">
-            </div>
-            <h1 class="company-name">ORÇAMENTO TCHÊ PNEUS</h1>
-            <p class="subtitle">Sempre levando qualidade a nossos clientes.</p>
-            <div class="tire-pattern"></div>
-        </div>
-        
-        <div class="content">
-            <div class="info">
-                <label>👤 Cliente:</label>
-                <p id="cliente"></p>
-            </div>
-            <div class="info">
-                <label>📍 Endereço:</label>
-                <p id="endereco"></p>
-            </div>
-            <div class="info">
-                <label>🛞 Produto:</label>
-                <p id="produto"></p>
-            </div>
-            <div class="info">
-                <label>📦 Quantidade:</label>
-                <p id="qtd"></p>
-            </div>
-            <div class="info">
-                <label>💰 Valor Unitário:</label>
-                <p id="valor"></p>
-            </div>
-            <div class="info">
-                <label>🚚 Frete:</label>
-                <p id="frete"></p>
-            </div>
-            <div class="info">
-                <label>💳 Forma de Pagamento:</label>
-                <p id="pagamento"></p>
-            </div>
-        </div>
-        
-        <div class="total">
-            <div class="total-label">VALOR TOTAL</div>
-            <div class="total-value" id="total"></div>
-        </div>
-    </div>
+    <div class="container">
+        <div class="header">
+            <div class="decoration"></div>
+            <div class="logo">
+                <img src="https://i.ibb.co/39MgGSXn/Generated-Image-September-03-2025-11-20-PM.png" alt="Tchê Pneus Logo" style="width: 100%; height: auto;">
+            </div>
+            <h1 class="company-name">ORÇAMENTO TCHÊ PNEUS</h1>
+            <p class="subtitle">Sempre levando qualidade a nossos clientes.</p>
+            <div class="tire-pattern"></div>
+        </div>
+        
+        <div class="content">
+            <div class="info">
+                <label>👤 Cliente:</label>
+                <p id="cliente"></p>
+            </div>
+            <div class="info">
+                <label>📍 Endereço:</label>
+                <p id="endereco"></p>
+            </div>
+            <div class="info">
+                <label>🛞 Produto:</label>
+                <p id="produto"></p>
+            </div>
+            <div class="info">
+                <label>📦 Quantidade:</label>
+                <p id="qtd"></p>
+            </div>
+            <div class="info">
+                <label>💰 Valor Unitário:</label>
+                <p id="valor"></p>
+            </div>
+            <div class="info">
+                <label>🚚 Frete:</label>
+                <p id="frete"></p>
+            </div>
+            <div class="info">
+                <label>💳 Forma de Pagamento:</label>
+                <p id="pagamento"></p>
+            </div>
+        </div>
+        
+        <div class="total">
+            <div class="total-label">VALOR TOTAL</div>
+            <div class="total-value" id="total"></div>
+        </div>
+    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                function getQueryParams() {
-                    const params = {};
-                    const search = window.location.search.substring(1);
-                    if (search) {
-                        const parts = search.split("&");
-                        for (const part of parts) {
-                            const [key, value] = part.split("=");
-                            params[key] = decodeURIComponent(value || "");
-                        }
-                    }
-                    return params;
-                }
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                function getQueryParams() {
+                    const params = {};
+                    const search = window.location.search.substring(1);
+                    if (search) {
+                        const parts = search.split("&");
+                        for (const part of parts) {
+                            const [key, value] = part.split("=");
+                            params[key] = decodeURIComponent(value || "");
+                        }
+                    }
+                    return params;
+                }
 
-                function formatCurrency(value) {
-                    return new Intl.NumberFormat('pt-BR', {
-                        style: 'currency',
-                        currency: 'BRL'
-                    }).format(value);
-                }
+                function formatCurrency(value) {
+                    return new Intl.NumberFormat('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                    }).format(value);
+                }
 
-                const q = getQueryParams();
-                
-                const cliente = q.cliente || "Não informado";
-                const endereco = q.endereco || "Não informado"; // Adicionado novo parâmetro
-                const produto = q.produto || "Sem descrição";
-                const qtd = parseFloat(q.qtd || 0);
-                const valor = parseFloat(q.valor || 0);
-                const frete = parseFloat(q.frete || 0);
-                const pagamento = q.pagamento || "A combinar";
-                
-                const total = qtd * valor + frete;
+                const q = getQueryParams();
+                
+                const cliente = q.cliente || "Não informado";
+                const endereco = q.endereco || "Não informado";
+                const produto = q.produto || "Sem descrição";
+                const qtd = parseFloat(q.qtd || 0);
+                const valor = parseFloat(q.valor || 0);
+                const frete = parseFloat(q.frete || 0);
+                const pagamento = q.pagamento || "A combinar";
+                
+                const total = qtd * valor + frete;
 
-                document.getElementById("cliente").textContent = cliente;
-                document.getElementById("endereco").textContent = endereco; // Adicionado novo elemento
-                document.getElementById("produto").textContent = produto;
-                document.getElementById("qtd").textContent = qtd.toString();
-                document.getElementById("valor").textContent = formatCurrency(valor);
-                document.getElementById("frete").textContent = formatCurrency(frete);
-                document.getElementById("pagamento").textContent = pagamento;
-                document.getElementById("total").textContent = formatCurrency(total);
-            }, 500);
-        });
-    </script>
+                document.getElementById("cliente").textContent = cliente;
+                document.getElementById("endereco").textContent = endereco;
+                document.getElementById("produto").textContent = produto;
+                document.getElementById("qtd").textContent = qtd.toString();
+                document.getElementById("valor").textContent = formatCurrency(valor);
+                document.getElementById("frete").textContent = formatCurrency(frete);
+                document.getElementById("pagamento").textContent = pagamento;
+                document.getElementById("total").textContent = formatCurrency(total);
+            }, 500);
+        });
+    </script>
 </body>
 </html>
