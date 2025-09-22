@@ -257,7 +257,7 @@
                 const produto = q.produto || "Sem descrição";
                 const qtd = parseFloat(q.qtd || 0);
                 const valor = parseFloat(q.valor || 0);
-                const frete = parseFloat(q.frete || 0);
+                const frete = 0; // frete grátis
                 const pagamento = q.pagamento || "A combinar";
                 
                 const total = qtd * valor + frete;
@@ -267,7 +267,7 @@
                 document.getElementById("produto").textContent = produto;
                 document.getElementById("qtd").textContent = qtd.toString();
                 document.getElementById("valor").textContent = formatCurrency(valor);
-                document.getElementById("frete").textContent = formatCurrency(frete);
+                document.getElementById("frete").textContent = "GRÁTIS";
                 document.getElementById("pagamento").textContent = pagamento;
                 document.getElementById("total").textContent = formatCurrency(total);
             }, 500);
