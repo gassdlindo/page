@@ -181,14 +181,16 @@
             display: flex;
             gap: 15px;
             width: 384px;
+            flex-wrap: wrap;
         }
 
         .btn-download {
             flex: 1;
+            min-width: 110px;
             padding: 15px;
             border: none;
             border-radius: 10px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -215,6 +217,19 @@
         .btn-png:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-copiar-img {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+        }
+
+        .btn-copiar-img:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3);
+        }
+
+        .btn-copiar-img.copiado {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
         }
 
         .btn-download:active {
@@ -292,10 +307,13 @@
 
     <div class="download-buttons">
         <button class="btn-download btn-pdf" id="btnPDF">
-            📄 Baixar PDF
+            📄 PDF
         </button>
         <button class="btn-download btn-png" id="btnPNG">
-            🖼️ Baixar PNG
+            🖼️ PNG
+        </button>
+        <button class="btn-download btn-copiar-img" id="btnCopiarImg">
+            📋 Copiar
         </button>
     </div>
 
@@ -440,6 +458,55 @@
                 pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
                 pdf.save(`orcamento_${clienteNome}.pdf`);
             });
+        });
+
+        // Função para copiar imagem para área de transferência
+        document.getElementById('btnCopiarImg').addEventListener('click', async function() {
+            const btn = this;
+            const textoOriginal = btn.textContent;
+            
+            try {
+                const elemento = document.getElementById('orcamento');
+                
+                // Aguarda as imagens carregarem
+                await esperarImagensCarregarem();
+                
+                const canvas = await html2canvas(elemento, {
+                    scale: 1,
+                    width: 384,
+                    height: 980,
+                    backgroundColor: '#ffffff',
+                    logging: false,
+                    useCORS: true,
+                    allowTaint: true
+                });
+
+                // Converte canvas para blob
+                canvas.toBlob(async (blob) => {
+                    try {
+                        await navigator.clipboard.write([
+                            new ClipboardItem({
+                                'image/png': blob
+                            })
+                        ]);
+                        
+                        btn.textContent = '✅ Copiado!';
+                        btn.classList.add('copiado');
+                        
+                        setTimeout(() => {
+                            btn.textContent = textoOriginal;
+                            btn.classList.remove('copiado');
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Erro ao copiar:', err);
+                        alert('Erro ao copiar imagem. Tente baixar o PNG.');
+                    }
+                }, 'image/png');
+                
+            } catch (err) {
+                console.error('Erro ao gerar imagem:', err);
+                alert('Erro ao gerar imagem. Tente novamente.');
+            }
         });
     </script>
 </body>
