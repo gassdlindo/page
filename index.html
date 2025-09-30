@@ -246,7 +246,7 @@
         <div class="header">
             <div class="decoration"></div>
             <div class="logo">
-                <img src="https://i.ibb.co/39MgGSXn/Generated-Image-September-03-2025-11-20-PM.png" alt="Tchê Pneus Logo" style="width: 100%; height: auto;">
+                <img src="https://i.ibb.co/39MgGSXn/Generated-Image-September-03-2025-11-20-PM.png" alt="Tchê Pneus Logo" style="width: 100%; height: auto;" crossorigin="anonymous">
             </div>
             <h1 class="company-name">ORÇAMENTO TCHÊ PNEUS</h1>
             <p class="subtitle">Sempre levando qualidade a nossos clientes.</p>
@@ -349,16 +349,57 @@
             }, 500);
         });
 
+        // Função auxiliar para garantir que todas as imagens foram carregadas
+        function esperarImagensCarregarem() {
+            return new Promise((resolve) => {
+                const imagens = document.querySelectorAll('img');
+                let imagensCarregadas = 0;
+                const totalImagens = imagens.length;
+
+                if (totalImagens === 0) {
+                    resolve();
+                    return;
+                }
+
+                imagens.forEach(img => {
+                    if (img.complete) {
+                        imagensCarregadas++;
+                        if (imagensCarregadas === totalImagens) {
+                            resolve();
+                        }
+                    } else {
+                        img.onload = () => {
+                            imagensCarregadas++;
+                            if (imagensCarregadas === totalImagens) {
+                                resolve();
+                            }
+                        };
+                        img.onerror = () => {
+                            imagensCarregadas++;
+                            if (imagensCarregadas === totalImagens) {
+                                resolve();
+                            }
+                        };
+                    }
+                });
+            });
+        }
+
         // Função para baixar como PNG
-        document.getElementById('btnPNG').addEventListener('click', function() {
+        document.getElementById('btnPNG').addEventListener('click', async function() {
             const elemento = document.getElementById('orcamento');
+            
+            // Aguarda as imagens carregarem
+            await esperarImagensCarregarem();
             
             html2canvas(elemento, {
                 scale: 1,
                 width: 384,
                 height: 980,
                 backgroundColor: '#ffffff',
-                logging: false
+                logging: false,
+                useCORS: true,
+                allowTaint: true
             }).then(canvas => {
                 const link = document.createElement('a');
                 link.download = `orcamento_${clienteNome}.png`;
@@ -368,15 +409,20 @@
         });
 
         // Função para baixar como PDF
-        document.getElementById('btnPDF').addEventListener('click', function() {
+        document.getElementById('btnPDF').addEventListener('click', async function() {
             const elemento = document.getElementById('orcamento');
+            
+            // Aguarda as imagens carregarem
+            await esperarImagensCarregarem();
             
             html2canvas(elemento, {
                 scale: 1,
                 width: 384,
                 height: 980,
                 backgroundColor: '#ffffff',
-                logging: false
+                logging: false,
+                useCORS: true,
+                allowTaint: true
             }).then(canvas => {
                 const imgData = canvas.toDataURL('image/png');
                 const { jsPDF } = window.jspdf;
